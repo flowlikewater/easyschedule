@@ -3,6 +3,10 @@
   <head>
     <title>Easyschedule</title>
     <%= csrf_meta_tags %>
+    <% stylesheet_link_tag "fullcalendar" %>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"   integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g="   crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/locale/zh-hk.js"></script>
+    <% javascript_include_tag "fullcalendar" %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
