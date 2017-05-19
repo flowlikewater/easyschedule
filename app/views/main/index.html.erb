@@ -1,1 +1,15 @@
-<h2>Hello</h2>
+<div class="container">
+  <h2>Hello, have a good day!</h2>
+  <hr>
+  <div id='calendar'></div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $('#calendar').fullCalendar({
+            defaultDate: '2014-09-12',
+            editable: true,
+            eventLimit: true, // allow "more" link when too many events
+        });
+    });
+</script>

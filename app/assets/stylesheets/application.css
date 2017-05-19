@@ -13,4 +13,5 @@
  *= require_tree .
  *= require_self
  *= require_fullcalender.css
+ *= require_yeti-bootstrap.min.css
  */
