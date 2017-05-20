@@ -45,7 +45,7 @@ class Api::V1::UsersController < ApplicationController
 
   protected
   def authenticate
-    unless request.headers["HTTP_API_KEY"] == "abc"
+    unless request.headers["HTTP_API_KEY"] == Rails.application.secrets.BOOKING_API_KEY
       head(403)
     end
   end
