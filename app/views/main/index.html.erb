@@ -1,7 +1,20 @@
 <div class="container">
   <h2>Hello, have a good day!</h2>
-  <hr>
+  <h4>Welcome <%= params[:user_email] %></h4>
+  <h4>Now viewing <%= params[:property_id] %></h4>
+
+<hr>
+
+  <% @users.each do |user| %>
+    <ul>
+      <li><%= user.email %></li>
+    </ul>
+  <% end %>
+
+<hr>
+
   <div id='calendar'></div>
+
 </div>
 
 <script>
