@@ -17,3 +17,6 @@
 /yarn-error.log
 
 .byebug_history
+
+# always add all .yml files to my .gitignore file, like this This serves to keep # any configuration files off of git
+*.yml

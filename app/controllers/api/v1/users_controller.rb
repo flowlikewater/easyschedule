@@ -1,7 +1,10 @@
 class Api::V1::UsersController < ApplicationController
-  respond_to :json
 
-  skip_before_action :verify_authenticity_token
+  # skip_before_action :verify_authenticity_token
+
+  before_action :authenticate
+
+  respond_to :json
 
   def show
     respond_with User.find(params[:id])
@@ -38,5 +41,12 @@ class Api::V1::UsersController < ApplicationController
   private
   def user_params
     params.permit(:email,:password,:password_confirmation)
+  end
+
+  protected
+  def authenticate
+    unless request.headers["HTTP_API_KEY"] == "abc"
+      head(403)
+    end
   end
 end
