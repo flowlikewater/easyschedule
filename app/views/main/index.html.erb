@@ -5,11 +5,30 @@
 
 <hr>
 
-  <% @users.each do |user| %>
-    <ul>
-      <li><%= user.email %></li>
-    </ul>
-  <% end %>
+<dl class="dl-horizontal">
+  <dt><strong> Name</strong></dt>
+  <dd><%= @room.name %></dd>
+  <dt><strong> Description</strong></dt>
+  <dd><%= @room.description %></dd>
+  <dt><strong>Address</strong></dt>
+  <dd><%= @room.address %></dd>
+  <dt><strong>Price</strong></dt>
+  <dd><%= @room.price %></dd>
+  <dt><strong>Accomodates</strong></dt>
+  <dd><%= @room.accomodates %></dd>
+  <dt><strong>Bedroom</strong></dt>
+  <dd><%= @room.bedroom %></dd>
+  <dt><strong>Bathroom</strong></dt>
+  <dd><%= @room.bathroom %></dd>
+  <dt><strong>Has a tv</strong></dt>
+  <dd><%= @room.is_tv %></dd>
+  <dt><strong>Has a kitchen</strong></dt>
+  <dd><%= @room.is_kitchen %></dd>
+  <dt><strong>Has internet</strong></dt>
+  <dd><%= @room.is_internet %></dd>
+  <dt><strong>Active</strong></dt>
+  <dd><%= @room.active %></dd>
+</dl>
 
 <hr>
 
