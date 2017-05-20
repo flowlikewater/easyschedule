@@ -1,11 +1,9 @@
 <div class="container">
-  <h2>Hello, have a good day!</h2>
-  <h4>Welcome <%= params[:user_email] %></h4>
-  <h4>Now viewing <%= params[:property_id] %></h4>
-
+  <h2>Welcome <%= @user.email %></h2>
+  <h3>Have a good day!</h3>
 <hr>
 
-<dl class="dl-horizontal">
+<dl class="dl-horizontal col-md-6">
   <dt><strong> Name</strong></dt>
   <dd><%= @room.name %></dd>
   <dt><strong> Description</strong></dt>
@@ -16,9 +14,11 @@
   <dd><%= @room.price %></dd>
   <dt><strong>Accomodates</strong></dt>
   <dd><%= @room.accomodates %></dd>
-  <dt><strong>Bedroom</strong></dt>
+</dl>
+<dl class="dl-horizontal col-md-6">
+  <dt><strong>Bedrooms</strong></dt>
   <dd><%= @room.bedroom %></dd>
-  <dt><strong>Bathroom</strong></dt>
+  <dt><strong>Bathrooms</strong></dt>
   <dd><%= @room.bathroom %></dd>
   <dt><strong>Has a tv</strong></dt>
   <dd><%= @room.is_tv %></dd>
