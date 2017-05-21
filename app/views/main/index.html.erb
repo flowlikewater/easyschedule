@@ -30,8 +30,8 @@
           <% end %>
         ],
         select: function(start,end) {
-          $.getScript('/events/new',function() {
-            $('#event_date_range').val(moment(start).format("MM/DD/YYYY HH:mm") + ' - ' + moment(end).format("MM/DD/YYYY HH:mm"));
+          $.getScript('/bookings/new',function() {
+            $('#booking_date_range').val(moment(start).format("MM/DD/YYYY HH:mm") + ' - ' + moment(end).format("MM/DD/YYYY HH:mm"));
             date_range_picker();
             $('.start_hidden').val(moment(start).format('YYYY-MM-DD HH:mm'));
             $('.end_hidden').val(moment(start).format('YYYY-MM-DD HH:mm'));
@@ -40,4 +40,8 @@
         }
       });
     });
+</script>
+<script>
+  $('#remote_container').html('<%= j render 'new' %>');
+  $('#new_event').modal('show');
 </script>

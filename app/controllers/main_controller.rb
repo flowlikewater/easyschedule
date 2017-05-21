@@ -17,6 +17,7 @@ class MainController < ApplicationController
     # object class is important here to help turn it into a user friendly format
     @user = JSON.parse(response2.body, object_class:OpenStruct)
     @bookings = Booking.where(room_ref: @room[:room].ref)
+    @booking = Booking.new()
   end
 
   def create
