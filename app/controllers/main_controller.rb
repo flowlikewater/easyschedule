@@ -16,7 +16,20 @@ class MainController < ApplicationController
                       )
     # object class is important here to help turn it into a user friendly format
     @user = JSON.parse(response2.body, object_class:OpenStruct)
+    @bookings = Booking.where(room_ref: @room[:room].ref)
+  end
 
+  def create
+    booking = Booking.new()
+    booking.room_ref = @room[:room].ref
+    booking.date = Date.today
+    booking.email = @user.email
+    booking.save
+  end
+
+  def nesthost
+    url = "http://localhost:3000/rooms/"
+    redirect_to url
   end
 
 end

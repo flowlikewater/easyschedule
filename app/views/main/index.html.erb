@@ -1,36 +1,9 @@
 <div class="container">
-  <h2>Welcome <%= @user.email %></h2>
-  <h3>Have a good day!</h3>
-<hr>
-
-<dl class="dl-horizontal col-md-6">
-  <dt><strong> Name</strong></dt>
-  <dd><%= @room.name %></dd>
-  <dt><strong> Description</strong></dt>
-  <dd><%= @room.description %></dd>
-  <dt><strong>Address</strong></dt>
-  <dd><%= @room.address %></dd>
-  <dt><strong>Price</strong></dt>
-  <dd><%= @room.price %></dd>
-  <dt><strong>Accomodates</strong></dt>
-  <dd><%= @room.accomodates %></dd>
-</dl>
-<dl class="dl-horizontal col-md-6">
-  <dt><strong>Bedrooms</strong></dt>
-  <dd><%= @room.bedroom %></dd>
-  <dt><strong>Bathrooms</strong></dt>
-  <dd><%= @room.bathroom %></dd>
-  <dt><strong>Has a tv</strong></dt>
-  <dd><%= @room.is_tv %></dd>
-  <dt><strong>Has a kitchen</strong></dt>
-  <dd><%= @room.is_kitchen %></dd>
-  <dt><strong>Has internet</strong></dt>
-  <dd><%= @room.is_internet %></dd>
-  <dt><strong>Active</strong></dt>
-  <dd><%= @room.active %></dd>
-</dl>
+  <h2>Welcome <%= @user.email %>, have a good day! <%= link_to 'Back to Listings', nesthost_redirect_path, class: 'btn btn-primary', method: :get %> </h2>
 
 <hr>
+
+<%= render :partial => 'property' %>
 
   <div id='calendar'></div>
 
@@ -39,7 +12,18 @@
 <script>
     $(document).ready(function() {
         $('#calendar').fullCalendar({
-            defaultDate: '2014-09-12',
+          events: [
+        <% @bookings.each do |booking| %>
+          {
+          title  : '<%= (booking.email==@room[:landlord_email])? "Booked by Landlord" : "Booked by Tenant" %>',
+          start  : '<%= booking.date %>',
+          backgroundColor: '<%= (booking.email==@room[:landlord_email])? 'rgb(251, 50, 50)' : 'rgb(33, 8, 235)' %>'
+          },
+        <% end %>
+        ]
+        ,
+            height: 500,
+            defaultDate: '<%= Date.today() %>',
             editable: true,
             eventLimit: true, // allow "more" link when too many events
         });
