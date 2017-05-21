@@ -11,21 +11,33 @@
 
 <script>
     $(document).ready(function() {
-        $('#calendar').fullCalendar({
-          events: [
-        <% @bookings.each do |booking| %>
-          {
-          title  : '<%= (booking.email==@room[:landlord_email])? "Booked by Landlord" : "Booked by Tenant" %>',
-          start  : '<%= booking.date %>',
-          backgroundColor: '<%= (booking.email==@room[:landlord_email])? 'rgb(251, 50, 50)' : 'rgb(33, 8, 235)' %>'
-          },
-        <% end %>
-        ]
-        ,
-            height: 500,
-            defaultDate: '<%= Date.today() %>',
-            editable: true,
-            eventLimit: true, // allow "more" link when too many events
-        });
+      $('#calendar').fullCalendar({
+        height: 500,
+        defaultDate: '<%= Date.today() %>',
+        header: {left: 'prev,next,today', center: 'title', right: 'month,agendaWeek,agendaDay'},
+        selectable: true,
+        selectHelper: true,
+        editable: true,
+        eventLimit: true,
+        events: [
+          <% @bookings.each do |booking| %>
+            {
+            title: '<%= (booking.email==@room[:landlord_email])? "Booked by Landlord" : "Booked by Tenant" %>',
+            start: '<%= booking.start %>',
+            end: '<%= booking.end %>',
+            backgroundColor: '<%= (booking.email==@room[:landlord_email])? 'rgb(251, 50, 50)' : 'rgb(33, 8, 235)' %>'
+            },
+          <% end %>
+        ],
+        select: function(start,end) {
+          $.getScript('/events/new',function() {
+            $('#event_date_range').val(moment(start).format("MM/DD/YYYY HH:mm") + ' - ' + moment(end).format("MM/DD/YYYY HH:mm"));
+            date_range_picker();
+            $('.start_hidden').val(moment(start).format('YYYY-MM-DD HH:mm'));
+            $('.end_hidden').val(moment(start).format('YYYY-MM-DD HH:mm'));
+          });
+        calendar.fullCalendar('unselect');
+        }
+      });
     });
 </script>

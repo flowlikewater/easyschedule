@@ -17,7 +17,8 @@ ActiveRecord::Schema.define(version: 20170520230817) do
 
   create_table "bookings", force: :cascade do |t|
     t.string "room_ref"
-    t.date "date"
+    t.date "start"
+    t.date "end"
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

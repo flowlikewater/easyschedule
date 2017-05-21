@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   root :to => 'main#index'
 
+  resources :bookings
+
   get '/nesthost_redirect', to:'main#nesthost'
 
   namespace :api, defaults: {format: :json  } do
