@@ -36,12 +36,8 @@
             $('.start_hidden').val(moment(start).format('YYYY-MM-DD HH:mm'));
             $('.end_hidden').val(moment(start).format('YYYY-MM-DD HH:mm'));
           });
-        calendar.fullCalendar('unselect');
+        $('#calendar').fullCalendar('unselect');
         }
       });
     });
-</script>
-<script>
-  $('#remote_container').html('<%= j render 'bookings/new' %>');
-  $('#new_event').modal('show');
 </script>
