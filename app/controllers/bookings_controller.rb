@@ -3,7 +3,11 @@ class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :edit, :update, :destroy]
 
   def index
+    # comment out test
     @bookings = Booking.where(room_ref: session[:room_ref])
+
+    # @bookings = Booking.where(email: 'ken@example.com')
+
     # perhaps need to combine with Booking.where(start: params[:start]..params[:end])
     @booking = Booking.new()
   end
