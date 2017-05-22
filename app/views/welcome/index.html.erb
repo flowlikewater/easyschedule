@@ -22,7 +22,13 @@
           eventSources: ['/bookings.json'],
           // create a message
           selectOverlap: function (event) {
-              if (event.title.startsWith("Requested")) {
+              if (event.title.startsWith("Requested")||event.title.startsWith("Rejected")) {
+                return true;
+              }
+              return false;
+          },
+          eventOverlap: function (event) {
+              if (event.title.startsWith("Requested")||event.title.startsWith("Rejected")) {
                 return true;
               }
               return false;

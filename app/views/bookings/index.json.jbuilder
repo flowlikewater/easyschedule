@@ -10,8 +10,7 @@ json.array! @bookings do |booking|
   json.end booking.end.strftime(date_format)
   json.title (booking.booker_email==booking.landlord_email)? "Booked by Landlord" : "Booked by "+ booking.booker_email
   json.backgroundColor (booking.booker_email==booking.landlord_email)? 'rgb(1, 28, 168)' : 'rgb(44, 207, 40)'
-  json.selectOverlap false
-  json.overlap false
+
 
   json.update_url booking_path(booking, method: :patch)
   json.edit_url edit_booking_path(booking)
@@ -29,9 +28,26 @@ json.array! @requests do |request|
   json.end request.end.strftime(date_format)
   json.title "Requested by "+ request.booker_email
   json.backgroundColor 'rgba(255, 184, 0, 0.74)'
-  json.overlap true
-  json.selectOverlap false
+
 
   json.update_url booking_path(request, method: :patch)
   json.edit_url edit_booking_path(request)
+end
+
+json.array! @rejections do |reject|
+  date_format = '%Y-%m-%d'
+
+  json.id reject.id
+  json.booker_email reject.booker_email
+  json.landlord_email reject.landlord_email
+
+  json.room_ref reject.room_ref
+  json.start reject.start.strftime(date_format)
+  json.end reject.end.strftime(date_format)
+  json.title "Rejected "+ reject.booker_email
+  json.backgroundColor 'rgba(145, 145, 145, 0.86)'
+
+
+  json.update_url booking_path(reject, method: :patch)
+  json.edit_url edit_booking_path(reject)
 end
