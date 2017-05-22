@@ -6,8 +6,9 @@ class BookingsController < ApplicationController
     # comment out test
     # @bookings = Booking.where(room_ref: session[:room_ref])
 
-    @bookings = Booking.where('landlord_email=booker_email').where(room_ref: session[:room_ref])
-    @requests = Booking.where('landlord_email!=booker_email').where(room_ref: session[:room_ref])
+    @bookings = Booking.where(state:'booked').where(room_ref: session[:room_ref])
+    @rejections = Booking.where(state:'rejected').where(room_ref: session[:room_ref])
+    @requests = Booking.where(state:'requested').where(room_ref: session[:room_ref])
     # perhaps need to combine with Booking.where(start: params[:start]..params[:end])
     @booking = Booking.new()
   end

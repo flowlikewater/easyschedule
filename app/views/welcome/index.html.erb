@@ -12,7 +12,6 @@
       $('.calendar').each(function(){
         var calendar = $(this);
         calendar.fullCalendar({
-          height: 500,
           defaultDate: '<%= Date.today() %>',
           header: {left: 'prev,next,today', center: 'title', right: 'month,agendaWeek,agendaDay'},
           selectable: true,
@@ -22,7 +21,12 @@
           editable: true,
           eventSources: ['/bookings.json'],
           // create a message
-          selectOverlap:false,
+          selectOverlap: function (event) {
+              if (event.title.startsWith("Requested")) {
+                return true;
+              }
+              return false;
+          },
           // create a message
           select: function(start,end) {
             $.getScript('/bookings/new',function() {
