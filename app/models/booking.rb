@@ -1,5 +1,8 @@
 class Booking < ApplicationRecord
-  validates :email, presence: true
+  validates :booker_email, presence: true
+  validates :landlord_email, presence: true
+  validates :room_ref, presence: true
+
   attr_accessor :date_range
 
 end

@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
-  root :to => 'main#index'
-
   resources :bookings
+
+  root :to => 'main#index'
 
   get '/nesthost_redirect', to:'main#nesthost'
 

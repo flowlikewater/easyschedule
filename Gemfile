@@ -22,7 +22,6 @@ gem 'momentjs-rails'
 
 gem 'bootstrap-sass'
 gem 'devise'
-gem 'simple_form'
 
 gem 'active_model_serializers'
 
