@@ -1,4 +1,4 @@
-class MainController < ApplicationController
+class WelcomeController < ApplicationController
 
   def index
     response = RestClient::Request.execute(

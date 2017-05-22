@@ -2,9 +2,9 @@ Rails.application.routes.draw do
 
   resources :bookings
 
-  root :to => 'main#index'
+  root :to => 'welcome#index'
 
-  get '/nesthost_redirect', to:'main#nesthost'
+  get '/nesthost_redirect', to:'welcome#nesthost'
 
   namespace :api, defaults: {format: :json  } do
     devise_for :users

@@ -1,4 +1,3 @@
-debugger
 json.array! @bookings do |booking|
   date_format = '%Y-%m-%d'
 

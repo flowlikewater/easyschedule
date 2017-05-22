@@ -22,9 +22,7 @@ gem 'momentjs-rails'
 
 gem 'bootstrap-sass'
 gem 'devise'
-
 gem 'active_model_serializers'
-
 gem 'rest-client'
 
 

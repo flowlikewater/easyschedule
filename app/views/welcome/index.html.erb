@@ -1,0 +1,55 @@
+<div id="section">
+  <h4>
+    Welcome <%= @user.email %>, have a good day! <%= link_to 'Back to Listings', nesthost_redirect_path, class: 'btn btn-primary', method: :get %>
+  </h4>
+  <hr>
+
+  <%= render :partial => 'property' %>
+
+    <div id='calendar'></div>
+
+  <script>
+  $(document).ready(function() {
+    $('#calendar').fullCalendar({
+      height: 500,
+      defaultDate: '<%= Date.today() %>',
+      header: {left: 'prev,next,today', center: 'title', right: 'month,agendaWeek,agendaDay'},
+      selectable: true,
+      selectHelper: true,
+      editable: true,
+      eventLimit: true,
+      events: '/bookings.json',
+      select: function(start,end) {
+        $.getScript('/bookings/new',function() {
+          $('#booking_date_range').val(moment(start).format("DD/MM/YYYY") + ' - ' + moment(end).format("DD/MM/YYYY"));
+          date_range_picker();
+        });
+        $('#calendar').fullCalendar('unselect');
+      },
+
+      eventDrop: function(booking, delta, revertFunc) {
+        event_data = {
+          booking: {
+            id: booking.id,
+            start: booking.start.format("DD/MM/YYYY"),
+            end: booking.end.format("DD/MM/YYYY"),
+          }
+        };
+        $.ajax({
+          url: booking.update_url,
+          data: event_data,
+          type: 'PATCH'
+        });
+      },
+
+      eventClick: function(booking, jsEvent, view) {
+        $.getScript(booking.edit_url, function() {
+          $('#booking_date_range').val(moment(booking.start).format("DD/MM/YYYY") + ' - ' + moment(booking.end).format("DD/MM/YYYY"));
+          daterangepicker();
+        });
+      }
+
+    });
+  });
+  </script>
+</div>

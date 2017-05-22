@@ -1,0 +1,16 @@
+<script type="text/javascript">
+
+
+events: [
+  <% @bookings.each do |booking| %>
+    {
+    title: '<%= (booking.booker_email==booking.landlord_email)? "Booked by Landlord" : "Booked by Tenant" %>',
+    start: '<%= booking.start %>',
+    end: '<%= booking.end %>',
+    backgroundColor: '<%= (booking.booker_email==booking.landlord_email)? 'rgb(251, 50, 50)' : 'rgb(33, 8, 235)' %>'
+    },
+  <% end %>
+],
+
+
+</script>

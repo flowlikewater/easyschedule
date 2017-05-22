@@ -19,7 +19,6 @@ class BookingsController < ApplicationController
   end
 
   def create
-    booking_params
     params[:booking][:start]=params[:booking][:date_range].slice(0, 10)
     params[:booking][:end]=params[:booking][:date_range].last(10)
     @booking = Booking.new(booking_params)
@@ -28,6 +27,10 @@ class BookingsController < ApplicationController
   end
 
   def update
+    if params[:booking][:date_range].present?
+    params[:booking][:start] = params[:booking][:date_range].slice(0, 10)
+    params[:booking][:end] = params[:booking][:date_range].last(10)
+    end
     @booking.update(booking_params)
   end
 
@@ -41,6 +44,6 @@ class BookingsController < ApplicationController
     end
 
     def booking_params
-      params.require(:booking).permit(:booker_email, :landlord_email , :room_ref, :date_range, :start, :end)
+      params.require(:booking).permit(:id, :booker_email, :landlord_email , :room_ref, :date_range, :start, :end)
     end
 end
