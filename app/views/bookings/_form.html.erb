@@ -1,5 +1,5 @@
 <%= form_for @booking, remote:true do |f| %>
-  <%= f.text_field :date_range, value:"", input_html: { class: "form-control input-sm" }, :size => 25 %>
+  <%= f.text_field :date_range, value:"", input_html: { class: "form-control input-sm" }, data:{ provide:' datepicker' }, :size => 25 %>
   <%= f.hidden_field :booker_email, value: session[:booker_email] %>
   <%= f.hidden_field :landlord_email, value: session[:landlord_email] %>
   <%= f.hidden_field :room_ref, value: "b73f28753653e8f62bfc4fe404b5dc14" %>
