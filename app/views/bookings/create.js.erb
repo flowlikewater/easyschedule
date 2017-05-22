@@ -1,8 +1,7 @@
-// $('.calendar').fullCalendar(
-//   'renderEvent',
-//   $.parseJSON("<%=j render(@booking, format: :json).html_safe %>"),
-//   true
-// );
+$('.calendar').fullCalendar(
+  'renderEvent',
+  $.parseJSON("<%=j render(@booking, format: :json).html_safe %>"),
+  true
+);
 
 $('.modal').modal('hide');
-location.reload();

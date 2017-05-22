@@ -18,7 +18,7 @@ gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-# gem 'turbolinks', '~> 5'
+gem 'turbolinks', '~> 5'
 
 gem 'bootstrap-sass'
 gem 'devise'
