@@ -24,7 +24,6 @@
           // create a message
           selectOverlap:false,
           // create a message
-          eventOverlap:false,
           select: function(start,end) {
             $.getScript('/bookings/new',function() {
               $('#booking_date_range').val(moment(start).format("DD/MM/YYYY") + ' - ' + moment(end).format("DD/MM/YYYY"));

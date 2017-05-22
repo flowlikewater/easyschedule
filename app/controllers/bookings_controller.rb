@@ -4,10 +4,10 @@ class BookingsController < ApplicationController
 
   def index
     # comment out test
-    @bookings = Booking.where(room_ref: session[:room_ref])
+    # @bookings = Booking.where(room_ref: session[:room_ref])
 
-    # @bookings = Booking.where(email: 'ken@example.com')
-
+    @bookings = Booking.where('landlord_email=booker_email').where(room_ref: session[:room_ref])
+    @requests = Booking.where('landlord_email!=booker_email').where(room_ref: session[:room_ref])
     # perhaps need to combine with Booking.where(start: params[:start]..params[:end])
     @booking = Booking.new()
   end
