@@ -5,5 +5,6 @@
   <%= f.hidden_field :room_ref, value: session[:room_ref] %>
   <%= f.hidden_field :start, value: Date.today, class: 'form-control input-sm start_hidden' %>
   <%= f.hidden_field :end, value: Date.today, class: 'form-control input-sm end_hidden' %>
+  <%= f.select :state, [['Requested','requested'],['Rejected','rejected'],['Booked','booked']] %>
   <%= f.submit "Book" %>
 <% end %>
