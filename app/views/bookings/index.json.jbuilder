@@ -28,7 +28,7 @@ json.array! @requests do |request|
   json.room_ref request.room_ref
   json.start request.start.strftime(date_format)
   json.end request.end.strftime(date_format)
-  json.title "Requested by "+ request.booker_email
+  json.title "Requested by "+ request.booker_email + " $" + (((session[:price]/30)*(request.end-request.start)).to_f).to_s
   json.backgroundColor 'rgba(255, 184, 0, 0.74)'
 
 

@@ -20,6 +20,7 @@ class WelcomeController < ApplicationController
     session[:booker_email] = @user.email
     session[:room_ref] = @room[:room].ref
     session[:landlord_email] = @room[:landlord_email]
+    session[:price] = @room[:room].price
 
     @bookings = Booking.where(room_ref: session[:room_ref])
     # perhaps need to combine with Booking.where(start: params[:start]..params[:end])
