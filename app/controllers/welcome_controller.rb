@@ -4,8 +4,8 @@ class WelcomeController < ApplicationController
 
     response = RestClient::Request.execute(
                       method: :get,
-                      # url: "localhost:3000/api/v1/rooms/#{params[:room]}.json",
-                      url: "https://nesthost-98595.herokuapp.com/api/v1/rooms/#{params[:room]}.json",
+                      url: "localhost:3000/api/v1/rooms/#{params[:room]}.json",
+                      # url: "https://nesthost-98595.herokuapp.com/api/v1/rooms/#{params[:room]}.json",
                       headers: {api_key: Rails.application.secrets.BOOKING_API_KEY, token: params[:token] }
                       )
     # object class is important here to help turn it into a user friendly format
@@ -13,8 +13,8 @@ class WelcomeController < ApplicationController
 
     response2 = RestClient::Request.execute(
                       method: :get,
-                      # url: "localhost:3000/api/v1/users/#{params[:token]}.json",
-                      url: "https://nesthost-98595.herokuapp.com/api/v1/users/#{params[:token]}.json",
+                      url: "localhost:3000/api/v1/users/#{params[:token]}.json",
+                      # url: "https://nesthost-98595.herokuapp.com/api/v1/users/#{params[:token]}.json",
                       headers: {api_key: Rails.application.secrets.BOOKING_API_KEY, token: params[:token]}
                       )
     # object class is important here to help turn it into a user friendly format
@@ -32,8 +32,8 @@ class WelcomeController < ApplicationController
   end
 
   def nesthost
-    # url = "http://localhost:3000/rooms/"
-    url = "https://nesthost-98595.herokuapp.com/rooms/"
+    url = "http://localhost:3000/rooms/"
+    # url = "https://nesthost-98595.herokuapp.com/rooms/"
     redirect_to url
   end
 
