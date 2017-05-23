@@ -4,6 +4,7 @@ json.array! @bookings do |booking|
   json.id booking.id
   json.booker_email booking.booker_email
   json.landlord_email booking.landlord_email
+  json.state booking.state
 
   json.room_ref booking.room_ref
   json.start booking.start.strftime(date_format)
@@ -22,6 +23,7 @@ json.array! @requests do |request|
   json.id request.id
   json.booker_email request.booker_email
   json.landlord_email request.landlord_email
+  json.state request.state
 
   json.room_ref request.room_ref
   json.start request.start.strftime(date_format)
@@ -40,12 +42,14 @@ json.array! @rejections do |reject|
   json.id reject.id
   json.booker_email reject.booker_email
   json.landlord_email reject.landlord_email
+  json.state reject.state
 
   json.room_ref reject.room_ref
   json.start reject.start.strftime(date_format)
   json.end reject.end.strftime(date_format)
   json.title "Rejected "+ reject.booker_email
   json.backgroundColor 'rgba(145, 145, 145, 0.86)'
+  json.eventStartEditable false
 
 
   json.update_url booking_path(reject, method: :patch)

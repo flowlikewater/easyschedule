@@ -7,9 +7,8 @@ Rails.application.routes.draw do
   get '/nesthost_redirect', to:'welcome#nesthost'
 
   namespace :api, defaults: {format: :json  } do
-    devise_for :users
     namespace :v1 do
-      resources :users, :only => [ :show, :create, :update, :destroy ]
+      resources :bookings, :only => [ :show ]
     end
   end
 

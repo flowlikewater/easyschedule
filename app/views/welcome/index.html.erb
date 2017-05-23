@@ -19,7 +19,6 @@
           eventStartEditable: true,
           eventDurationEditable: false,
           editable: true,
-          eventSources: ['/bookings.json'],
           // create a message
           selectOverlap: function (event) {
               if (event.title.startsWith("Requested")||event.title.startsWith("Rejected")) {
@@ -34,12 +33,21 @@
               return false;
           },
           // create a message
-          select: function(start,end) {
+          select: function(start,end,booking) {
             $.getScript('/bookings/new',function() {
               $('#booking_date_range').val(moment(start).format("DD/MM/YYYY") + ' - ' + moment(end).format("DD/MM/YYYY"));
               date_range_picker();
             });
             calendar.fullCalendar('unselect');
+          },
+
+          eventDragStart: function(booking, jsEvent) {
+            console.log(booking);
+            console.log(jsEvent);
+            if (booking.state == 'rejected') {
+              location.reload(false);
+              alert("Unable to move rejected requests/bookings");
+            }
           },
 
           eventDrop: function(booking, delta, revertFunc) {
@@ -62,7 +70,8 @@
               $('#booking_date_range').val(moment(booking.start).format("DD/MM/YYYY") + ' - ' + moment(booking.end).format("DD/MM/YYYY"));
               daterangepicker();
             });
-          }
+          },
+          eventSources: ['/bookings.json'],
         });
       });
     $(document).on('turbolinks:load');
