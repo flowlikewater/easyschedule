@@ -54,8 +54,8 @@
             event_data = {
               booking: {
                 id: booking.id,
-                start: booking.start.format("DD/MM/YYYY"),
-                end: booking.end.format("DD/MM/YYYY"),
+                start: booking.start_date.format("DD/MM/YYYY"),
+                end: booking.end_date.format("DD/MM/YYYY"),
               }
             };
             $.ajax({

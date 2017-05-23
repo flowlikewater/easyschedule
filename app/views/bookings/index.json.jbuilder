@@ -7,8 +7,8 @@ json.array! @bookings do |booking|
   json.state booking.state
 
   json.room_ref booking.room_ref
-  json.start booking.start.strftime(date_format)
-  json.end booking.end.strftime(date_format)
+  json.start booking.start_date.strftime(date_format)
+  json.end booking.end_date.strftime(date_format)
   json.title (booking.booker_email==booking.landlord_email)? "Booked by Landlord" : "Booked by "+ booking.booker_email
   json.backgroundColor (booking.booker_email==booking.landlord_email)? 'rgb(1, 28, 168)' : 'rgb(44, 207, 40)'
 
@@ -26,8 +26,8 @@ json.array! @requests do |request|
   json.state request.state
 
   json.room_ref request.room_ref
-  json.start request.start.strftime(date_format)
-  json.end request.end.strftime(date_format)
+  json.start request.start_date.strftime(date_format)
+  json.end request.end_date.strftime(date_format)
   json.title "Requested by "+ request.booker_email + " $" + (((session[:price]/30)*(request.end-request.start)).to_f).to_s
   json.backgroundColor 'rgba(255, 184, 0, 0.74)'
 
@@ -45,8 +45,8 @@ json.array! @rejections do |reject|
   json.state reject.state
 
   json.room_ref reject.room_ref
-  json.start reject.start.strftime(date_format)
-  json.end reject.end.strftime(date_format)
+  json.start reject.start_date.strftime(date_format)
+  json.end reject.end_date.strftime(date_format)
   json.title "Rejected "+ reject.booker_email
   json.backgroundColor 'rgba(145, 145, 145, 0.86)'
   json.eventStartEditable false

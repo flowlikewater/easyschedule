@@ -6,8 +6,8 @@
     <%= f.hidden_field :booker_email, value: session[:booker_email] %>
     <%= f.hidden_field :landlord_email, value: session[:landlord_email] %>
     <%= f.hidden_field :room_ref, value: session[:room_ref] %>
-    <%= f.hidden_field :start, value: Date.today, class: 'form-control input-sm start_hidden' %>
-    <%= f.hidden_field :end, value: Date.today, class: 'form-control input-sm end_hidden' %>
+    <%= f.hidden_field :start_date, value: Date.today, class: 'form-control input-sm start_hidden' %>
+    <%= f.hidden_field :end_date, value: Date.today, class: 'form-control input-sm end_hidden' %>
     <%= f.select :state, [['Book','booked'],['Reject','rejected']] %>
     <%= f.submit "Submit" %>
   <% end %>
@@ -18,8 +18,8 @@
     <%= f.hidden_field :booker_email, value: session[:booker_email] %>
     <%= f.hidden_field :landlord_email, value: session[:landlord_email] %>
     <%= f.hidden_field :room_ref, value: session[:room_ref] %>
-    <%= f.hidden_field :start, value: Date.today, class: 'form-control input-sm start_hidden' %>
-    <%= f.hidden_field :end, value: Date.today, class: 'form-control input-sm end_hidden' %>
+    <%= f.hidden_field :start_date, value: Date.today, class: 'form-control input-sm start_hidden' %>
+    <%= f.hidden_field :end_date, value: Date.today, class: 'form-control input-sm end_hidden' %>
     <%= f.select :state, [['Request','requested']] %>
     <%= f.submit "Submit" %>
   <% end %>
@@ -29,8 +29,8 @@
     <%= f.text_field :date_range, value:"", input_html: { class: "form-control input-sm" }, data:{ provide:' datepicker' }, :size => 25 %>
     <%= f.hidden_field :landlord_email, value: session[:landlord_email] %>
     <%= f.hidden_field :room_ref, value: session[:room_ref] %>
-    <%= f.hidden_field :start, value: Date.today, class: 'form-control input-sm start_hidden' %>
-    <%= f.hidden_field :end, value: Date.today, class: 'form-control input-sm end_hidden' %>
+    <%= f.hidden_field :start_date, value: Date.today, class: 'form-control input-sm start_hidden' %>
+    <%= f.hidden_field :end_date, value: Date.today, class: 'form-control input-sm end_hidden' %>
     <%= f.select :state, [['Approve','booked'],['Reject','rejected']] %>
     <%= f.submit "Submit" %>
   <% end %>
@@ -42,8 +42,8 @@
     <%= f.text_field :booker_email, value: session[:booker_email] %>
     <%= f.hidden_field :landlord_email, value: session[:landlord_email] %>
     <%= f.hidden_field :room_ref, value: session[:room_ref] %>
-    <%= f.hidden_field :start, value: Date.today, class: 'form-control input-sm start_hidden' %>
-    <%= f.hidden_field :end, value: Date.today, class: 'form-control input-sm end_hidden' %>
+    <%= f.hidden_field :start_date, value: Date.today, class: 'form-control input-sm start_hidden' %>
+    <%= f.hidden_field :end_date, value: Date.today, class: 'form-control input-sm end_hidden' %>
     <%= f.select :state, [['Book','booked']] %>
     <%= f.submit "Submit" %>
   <% end %>
@@ -54,8 +54,8 @@
     <%= f.hidden_field :booker_email, value: session[:booker_email] %>
     <%= f.hidden_field :landlord_email, value: session[:landlord_email] %>
     <%= f.hidden_field :room_ref, value: session[:room_ref] %>
-    <%= f.hidden_field :start, value: Date.today, class: 'form-control input-sm start_hidden' %>
-    <%= f.hidden_field :end, value: Date.today, class: 'form-control input-sm end_hidden' %>
+    <%= f.hidden_field :start_date, value: Date.today, class: 'form-control input-sm start_hidden' %>
+    <%= f.hidden_field :end_date, value: Date.today, class: 'form-control input-sm end_hidden' %>
     <%= f.select :state, [['Request','requested']] %>
     <%= f.submit "Submit" %>
   <% end %>

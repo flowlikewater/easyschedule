@@ -10,9 +10,9 @@ class Api::V1::BookingsController < ApplicationController
     search_start = request.headers["HTTP_START_DATE"]
     search_end = request.headers["HTTP_END_DATE"]
     rooms = JSON.parse(request.headers["HTTP_ROOMS"], object_class:OpenStruct)
-    debugger
-    rooms = Booking.where.not(room_ref: rooms)
-    respond_with 1
+    # looks for just the id, for the full list of columns of unavailability take out select(:room_ref).distinct
+    full_rooms = Booking.select(:room_ref).distinct.where(room_ref: rooms).where("start_date<='#{search_end}'::date").where("end_date>='#{search_start}'::date")
+    respond_with full_rooms
   end
 
   def show

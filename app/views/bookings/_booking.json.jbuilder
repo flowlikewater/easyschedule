@@ -6,8 +6,8 @@
   json.state booking.state
 
   json.room_ref booking.room_ref
-  json.start booking.start.strftime(date_format)
-  json.end booking.end.strftime(date_format)
+  json.start booking.start_date.strftime(date_format)
+  json.end booking.end_date.strftime(date_format)
   json.title "Booked by Landlord" if (booking.state=='booked')&&(booking.booker_email==booking.landlord_email)
   json.title "Booked by "+booking.booker_email if (booking.state=='booked')&&(booking.booker_email!=booking.landlord_email)
   json.title "Change UI "+booking.booking.landlord_email if (booking.state=='requested')&&(booking.booker_email==booking.landlord_email)

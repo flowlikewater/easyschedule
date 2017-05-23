@@ -24,7 +24,7 @@ class WelcomeController < ApplicationController
     session[:price] = @room[:room].price
 
     @bookings = Booking.where(room_ref: session[:room_ref])
-    # perhaps need to combine with Booking.where(start: params[:start]..params[:end])
+    # perhaps need to combine with Booking.where(start: params[:start_date]..params[:end_date])
     @booking = Booking.new()
 
   end
