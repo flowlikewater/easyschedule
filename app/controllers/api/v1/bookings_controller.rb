@@ -6,6 +6,15 @@ class Api::V1::BookingsController < ApplicationController
 
   respond_to :json
 
+  def index
+    search_start = request.headers["HTTP_START_DATE"]
+    search_end = request.headers["HTTP_END_DATE"]
+    rooms = JSON.parse(request.headers["HTTP_ROOMS"], object_class:OpenStruct)
+    debugger
+    rooms = Booking.where.not(room_ref: rooms)
+    respond_with 1
+  end
+
   def show
     respond_with Booking.find(params[:id])
   end
