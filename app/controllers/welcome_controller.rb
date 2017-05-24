@@ -1,7 +1,7 @@
 class WelcomeController < ApplicationController
 
   def index
-
+    
     response = RestClient::Request.execute(
                       method: :get,
                       url: "localhost:3000/api/v1/rooms/#{params[:room]}.json",

@@ -7,6 +7,7 @@ class Api::V1::BookingsController < ApplicationController
   respond_to :json
 
   def index
+    debugger
     search_start = request.headers["HTTP_START_DATE"]
     search_end = request.headers["HTTP_END_DATE"]
     rooms = JSON.parse(request.headers["HTTP_ROOMS"], object_class:OpenStruct)
